@@ -23,9 +23,9 @@ function connect(){
     })
     .then(services =>{
         return Promise.all([
-            services[0].getCharcteristic('alert_level'),
-            services[1].getCharcteristic('alert_level'),
-            services[2].getCharcteristic('tx_power_level')
+            services[0].getCharacteristic('alert_level'),
+            services[1].getCharacteristic('alert_level'),
+            services[2].getCharacteristic('tx_power_level')
         ]);
     })
     .then(characteristics =>{
