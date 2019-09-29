@@ -1,5 +1,6 @@
 //CONNECTボタン
 function connect(){
+    console.log("clicked");
     navigator.bluetooth.requestDevice({
         filters: [{
             services: [
