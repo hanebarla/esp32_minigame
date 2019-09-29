@@ -5,7 +5,7 @@ function connect(){
     navigator.bluetooth.requestDevice({
         filters: [{
             services: [
-                'linl_loss',
+                'link_loss',
                 'immediate_alert',
                 'tx_power'
             ]
