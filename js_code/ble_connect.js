@@ -1,4 +1,5 @@
 //CONNECTボタン
+console.log("ok");
 function connect(){
     console.log("clicked");
     navigator.bluetooth.requestDevice({
