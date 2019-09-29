@@ -12,7 +12,7 @@ function connect(){
         }]
     })
     .then(device =>{
-        return device.connectGATT();
+        return device.gatt.connect();
     })
     .then(server =>{
         return Promise.all([
