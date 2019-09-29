@@ -5,7 +5,9 @@ function connect(){
     navigator.bluetooth.requestDevice({
         filters: [{
             services: [
-                '2222'
+                'linl_loss',
+                'immediate_alert',
+                'tx_power'
             ]
         }]
     })
@@ -14,12 +16,16 @@ function connect(){
     })
     .then(server =>{
         return Promise.all([
-            server.getPrimaryService('2222')
+            server.getPrimaryService('link_loss'),
+            server.getPrimaryService('immediate_alert'),
+            server.getCharcteristic('tx_power')
         ]);
     })
     .then(services =>{
         return Promise.all([
-            services[0].getCharcteristic('connection_test')
+            services[0].getCharcteristic('alert_level'),
+            services[1].getCharcteristic('alert_level'),
+            services[2].getCharcteristic('tx_power_level')
         ]);
     })
     .then(characteristics =>{
