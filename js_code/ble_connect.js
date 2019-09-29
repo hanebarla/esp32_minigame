@@ -18,7 +18,7 @@ function connect(){
         return Promise.all([
             server.getPrimaryService('link_loss'),
             server.getPrimaryService('immediate_alert'),
-            server.getCharcteristic('tx_power')
+            server.getPrimaryService('tx_power')
         ]);
     })
     .then(services =>{
