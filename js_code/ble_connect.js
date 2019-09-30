@@ -1,7 +1,7 @@
 //CONNECTボタン
-console.log("ok");
+console.log("page_ok");
 function connect(){
-    console.log("clicked");
+    console.log("connect_clicked");
     navigator.bluetooth.requestDevice({
         filters: [{
             services: [
@@ -34,4 +34,10 @@ function connect(){
     .catch(error =>{
         console.log(error);
     })
+}
+
+//DISCONNECTボタン
+function disconnect(){
+    console.log("disconnect_clicked");
+    device.gatt.disconnect();
 }
