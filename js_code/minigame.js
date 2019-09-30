@@ -4,7 +4,7 @@ var w_width = window.innerWidth;
 var w_height = window.innerHeight;
 
 var width_scale = w_width / const_width;
-var height_scale = w_height / const_heigt;
+var height_scale = w_height / const_height;
 
 var type = "WebGL";
 if(!PIXI.utils.isWebGLSupported()){
@@ -14,7 +14,7 @@ PIXI.utils.sayHello(type);
 
 var app = new PIXI.Application({
     width: const_width,
-    height: const_heigt
+    height: const_height
 });
 
 document.body.appendChild(app.view);
@@ -25,7 +25,7 @@ app.renderer.autoDensity = true;
 if(w_width >= w_height){
     app.renderer.resize(const_width * height_scale, w_height);
 }else{
-    app.renderer.resize(w_width, const_heigt * width_scale);
+    app.renderer.resize(w_width, const_height * width_scale);
 }
 
 //var stage = new PIXI.Container();
