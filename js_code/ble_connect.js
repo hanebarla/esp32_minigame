@@ -39,5 +39,10 @@ function connect(){
 //DISCONNECTボタン
 function disconnect(){
     console.log("disconnect_clicked");
-    device.gatt.disconnect();
+    navigator.bluetooth.requestDevice({
+        filters: []
+    })
+    .then(device =>{
+        return device.gatt.disconnect();
+    })
 }
