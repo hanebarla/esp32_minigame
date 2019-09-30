@@ -4,7 +4,7 @@ var w_width = window.innerWidth;
 var w_height = window.innerHeight;
 
 var width_scale = w_width / const_width;
-var height_scale = w_height / const_height;
+var height_scale = 4 * w_height / (const_height * 5);
 
 var type = "WebGL";
 if(!PIXI.utils.isWebGLSupported()){
