@@ -1,3 +1,4 @@
+var bluetoothDevice;
 //CONNECTボタン
 console.log("page_ok");
 function connect(){
@@ -12,9 +13,14 @@ function connect(){
         }]
     })
     .then(device =>{
+        bluetoothDevice = device;
+        console.log("Connected!");
         return device.gatt.connect();
     })
     .then(server =>{
+        if(device.gatt.connected){
+            device_connected[0] = 1;
+        }
         return Promise.all([
             server.getPrimaryService('link_loss'),
             server.getPrimaryService('immediate_alert'),
@@ -22,6 +28,7 @@ function connect(){
         ]);
     })
     .then(services =>{
+        console.log("Got Services");
         return Promise.all([
             services[0].getCharacteristic('alert_level'),
             services[1].getCharacteristic('alert_level'),
@@ -29,6 +36,7 @@ function connect(){
         ]);
     })
     .then(characteristics =>{
+        console.log("Got Characteristic");
 
     })
     .catch(error =>{
@@ -39,10 +47,9 @@ function connect(){
 //DISCONNECTボタン
 function disconnect(){
     console.log("disconnect_clicked");
-    navigator.bluetooth.requestDevice({
-        filters: []
-    })
-    .then(device =>{
-        return device.gatt.disconnect();
-    })
+    if(bluetoothDevice == null){
+        console.log("Not Connected");
+    }else{
+        bluetoothDevice.gatt.disconnect();
+    }
 }
