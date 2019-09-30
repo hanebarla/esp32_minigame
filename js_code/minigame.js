@@ -14,6 +14,6 @@ document.body.appendChild(app.view);
 app.renderer.view.style.position = "absolute";
 app.renderer.view.style.display = "block";
 app.renderer.autoDensity = true;
-app.renderer.resize(window.innerWidth, window.innerHeight);
+app.renderer.resize(4 * window.innerWidth / 5, 4 * window.innerHeight / 5);
 
 //var stage = new PIXI.Container();
