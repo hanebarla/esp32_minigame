@@ -13,7 +13,7 @@ document.body.appendChild(app.view);
 
 app.renderer.view.style.position = "absolute";
 app.renderer.view.style.display = "block";
-app.renderer.autoResize = true;
+app.renderer.autoDensity = true;
 app.renderer.resize(window.innerWidth, window.innerHeight);
 
 //var stage = new PIXI.Container();
