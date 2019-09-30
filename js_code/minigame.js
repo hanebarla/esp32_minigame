@@ -1,5 +1,5 @@
 var type = "WebGL";
-if(!devicePixelRatio.utils.isWebGLSupported()){
+if(!PIXI.utils.isWebGLSupported()){
     type = "canvas";
 }
-devicePixelRatio.utils.sayHello(type);
+PIXI.utils.sayHello(type);
