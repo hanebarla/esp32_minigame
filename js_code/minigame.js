@@ -6,6 +6,14 @@ var w_height = window.innerHeight;
 var width_scale = w_width / const_width;
 var height_scale = w_height / const_height;
 
+if(w_width >= w_height){
+    const_width = const_width * height_scale * 6/7;
+    const_height = const_height * 6/7;
+}else{
+    const_width = w_width;
+    const_height = const_height * width_scale;
+}
+
 var type = "WebGL";
 if(!PIXI.utils.isWebGLSupported()){
     type = "canvas";
@@ -18,14 +26,5 @@ var app = new PIXI.Application({
 });
 
 document.body.appendChild(app.view);
-
-app.renderer.view.style.position = "absolute";
-app.renderer.view.style.display = "block";
-app.renderer.autoDensity = true;
-if(w_width >= w_height){
-    app.renderer.resize(const_width * height_scale * 4 / 5, w_height * 4 / 5);
-}else{
-    app.renderer.resize(w_width, const_height * width_scale);
-}
 
 //var stage = new PIXI.Container();
