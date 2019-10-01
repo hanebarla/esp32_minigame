@@ -1,5 +1,7 @@
-var rend_width = 400;
-var rend_height = 500;
+const rend_width = 400;
+const rend_height = 500;
+
+/*
 var w_width = window.innerWidth;
 var w_height = window.innerHeight;
 
@@ -13,6 +15,7 @@ if(w_width >= w_height){
     rend_width = rend_width;
     rend_height = rend_height * rend_scale;
 }
+*/
 
 var type = "WebGL";
 if(!PIXI.utils.isWebGLSupported()){
