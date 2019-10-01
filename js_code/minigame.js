@@ -1,17 +1,17 @@
-const const_width = 400;
-const const_height = 500;
+var rend_width = 400;
+var rend_height = 500;
 var w_width = window.innerWidth;
 var w_height = window.innerHeight;
 
-var width_scale = w_width / const_width;
-var height_scale = w_height / const_height;
+var width_scale = w_width / rend_width;
+var height_scale = w_height / rend_height;
 
 if(w_width >= w_height){
-    const_width = const_width * height_scale * 6/7;
-    const_height = const_height * 6/7;
+    rend_width = rend_width * height_scale * 6/7;
+    rend_height = rend_height * 6/7;
 }else{
-    const_width = w_width;
-    const_height = const_height * width_scale;
+    rend_width = rend_width;
+    rend_height = rend_height * rend_scale;
 }
 
 var type = "WebGL";
@@ -21,8 +21,8 @@ if(!PIXI.utils.isWebGLSupported()){
 PIXI.utils.sayHello(type);
 
 var app = new PIXI.Application({
-    width: const_width,
-    height: const_height
+    width: rend_width,
+    height: rend_height
 });
 
 document.body.appendChild(app.view);
