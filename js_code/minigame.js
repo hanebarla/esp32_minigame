@@ -14,7 +14,7 @@ var app = new PIXI.Application({
 
 document.body.appendChild(app.view);
 
-PIXI.loader()
+PIXI.Loader.shared
     .add("images/ship.png")
     .load(setup);
 
