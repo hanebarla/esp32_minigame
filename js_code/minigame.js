@@ -12,7 +12,7 @@ var app = new PIXI.Application({
     height: rend_height
 });
 
-document.body.appendChild(app.view);
+document.getElementById("display").appendChild(app.view);
 
 PIXI.Loader.shared
     .add("images/ship.png")
@@ -20,8 +20,23 @@ PIXI.Loader.shared
 
 function setup(){
     var ship = new PIXI.Sprite(PIXI.loader.resources["images/ship.png"].texture);
+    ship.x = rend_width / 2;
+    ship.y = rend_height / 2;
 
     app.stage.addChild(ship);
 }
 
-//var stage = new PIXI.Container();
+function gameloop(){
+    requestAnimationFrame(gameloop);
+
+    document.onkeydown = keydown;
+}
+
+function keydown(){
+    target = document.getElementById("display");
+    if(event.keyCode = "a"){
+        ship.x -=1;
+    }
+}
+
+gameloop();
