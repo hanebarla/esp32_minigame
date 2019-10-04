@@ -34,6 +34,7 @@ function setup(){
 
 function gameloop(delta){
     requestAnimationFrame(gameloop);
+    ship.x -= 1;
 
     document.onkeydown = keydown;
 }
