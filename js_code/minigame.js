@@ -47,12 +47,21 @@ function keydown(){
     switch(event.keyCode){
         case "a":
             ship.x -= 1;
+            console.log("a_code pushed");
+            break;
         case "s":
             ship.y += 1;
+            console.log("s_code pushed");
+            break;
         case "d":
             ship.x += 1;
+            console.log("d_code pushed");
+            break;
         case "w":
             ship.y -= 1;
+            console.log("w_code pushed");
+            break;
+        default:
     }
 }
 
