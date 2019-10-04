@@ -44,7 +44,7 @@ function gameloop(delta){
 function keydown(){
     target = document.getElementById("display");
     if(event.keyCode = "a"){
-        ship.x -=1;
+        ship.x -= 1 + delta;
     }
 }
 
