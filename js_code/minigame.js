@@ -16,7 +16,12 @@ document.getElementById("display").appendChild(app.view);
 
 PIXI.Loader.shared
     .add("images/ship.png")
+    .on("progress", loadProgressHandler)
     .load(setup);
+
+function loadProgressHandler(){
+    console.log("loading");
+}
 
 function setup(){
     var ship = new PIXI.Sprite(PIXI.loader.resources["images/ship.png"].texture);
@@ -24,13 +29,15 @@ function setup(){
     ship.y = rend_height / 2;
 
     app.stage.addChild(ship);
+    app.ticker.add(delta => gameloop(delta));
 }
 
-function gameloop(){
+function gameloop(delta){
     requestAnimationFrame(gameloop);
 
     document.onkeydown = keydown;
 }
+
 
 function keydown(){
     target = document.getElementById("display");
@@ -38,5 +45,6 @@ function keydown(){
         ship.x -=1;
     }
 }
+
 
 gameloop();
