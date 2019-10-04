@@ -43,10 +43,17 @@ function gameloop(delta){
 
 function keydown(){
     target = document.getElementById("display");
-    if(event.keyCode = "a"){
-        ship.x -= 1 + delta;
+
+    switch(event.keyCode){
+        case 'a':
+            ship.x -= 1;
+        case 's':
+            ship.y += 1;
+        case 'd':
+            ship.x += 1;
+        case 'w':
+            ship.y -= 1;
     }
 }
-
 
 gameloop();
