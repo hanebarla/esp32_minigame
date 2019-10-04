@@ -45,13 +45,13 @@ function keydown(){
     target = document.getElementById("display");
 
     switch(event.keyCode){
-        case 'a':
+        case "a":
             ship.x -= 1;
-        case 's':
+        case "s":
             ship.y += 1;
-        case 'd':
+        case "d":
             ship.x += 1;
-        case 'w':
+        case "w":
             ship.y -= 1;
     }
 }
