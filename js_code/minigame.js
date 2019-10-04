@@ -62,6 +62,7 @@ function keydown(){
             console.log("w_code pushed");
             break;
         default:
+            break;
     }
 }
 
