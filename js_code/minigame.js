@@ -19,12 +19,14 @@ PIXI.Loader.shared
     .on("progress", loadProgressHandler)
     .load(setup);
 
+var ship;
+
 function loadProgressHandler(){
     console.log("loading");
 }
 
 function setup(){
-    var ship = new PIXI.Sprite(PIXI.loader.resources["images/ship.png"].texture);
+    ship = new PIXI.Sprite(PIXI.loader.resources["images/ship.png"].texture);
     ship.x = rend_width / 2;
     ship.y = rend_height / 2;
 
@@ -34,7 +36,6 @@ function setup(){
 
 function gameloop(delta){
     requestAnimationFrame(gameloop);
-    ship.x -= 1;
 
     document.onkeydown = keydown;
 }
