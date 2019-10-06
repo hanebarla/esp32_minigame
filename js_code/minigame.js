@@ -20,6 +20,7 @@ PIXI.Loader.shared
     .load(setup);
 
 var ship;
+var state;
 
 function loadProgressHandler(){
     console.log("loading");
@@ -29,8 +30,10 @@ function setup(){
     ship = new PIXI.Sprite(PIXI.loader.resources["images/ship.png"].texture);
     ship.x = rend_width / 2;
     ship.y = rend_height / 2;
-
     app.stage.addChild(ship);
+
+    state = play;
+
     app.ticker.add(delta => gameloop(delta));
 }
 
@@ -40,29 +43,27 @@ function gameloop(delta){
     document.onkeydown = keydown;
 }
 
+function play(delta){
 
-function keydown(){
-    target = document.getElementById("display");
+}
 
-    switch(event.keyCode){
-        case "a":
-            ship.x -= 1;
-            console.log("a_code pushed");
-            break;
-        case "s":
-            ship.y += 1;
-            console.log("s_code pushed");
-            break;
-        case "d":
-            ship.x += 1;
-            console.log("d_code pushed");
-            break;
-        case "w":
-            ship.y -= 1;
-            console.log("w_code pushed");
-            break;
-        default:
-            break;
+function keyboard(value){
+    var key = {};
+    key.value = value;
+    key.isDown = false;
+    key.isUp = true;
+    key.press = undefined;
+    key.release = undefined;
+
+    key.downHandler = event => {
+        if(event.key === key.value){
+            if(key.isUp && key.press){
+                key.press();
+                key.isDown = true;
+                key.isUp = false;
+                event.preventDefault();
+            }
+        }
     }
 }
 
