@@ -38,9 +38,9 @@ function setup(){
     app.stage.addChild(player_ship);
 
     let left = keyboard('a');
-    let right = keyboard("d");
-    let up = keyboard("w");
-    let down = keyboard("s");
+    let right = keyboard('d');
+    let up = keyboard('w');
+    let down = keyboard('s');
 
     left.press = () => {
         player_ship.vx = -speed;
