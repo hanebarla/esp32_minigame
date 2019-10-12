@@ -20,7 +20,9 @@ document.getElementById("display").appendChild(app.view);
 
 //texture load
 PIXI.Loader.shared
-    .add("images/ship.png")
+    .add(["images/ship.png",
+          "images/my_ship.png",
+          "images/enemy_ships.png"])
     .on("progress", loadProgressHandler)
     .load(setup);
 
@@ -30,12 +32,19 @@ function loadProgressHandler(){
 
 function setup(){
     //Create player and enemy ship
-    player_ship = new PIXI.Sprite(PIXI.loader.resources["images/ship.png"].texture);
-    player_ship.x = rend_width / 2;
-    player_ship.y = rend_height / 2;
+    player_ship = new PIXI.Sprite(PIXI.Loader.shared.resources["images/my_ship.png"].texture);
+    enemy_ship = new PIXI.Sprite(PIXI.Loader.shared.resources["images/enemy_ship.png"].texture);
+    player_ship.x = app.screen.width / 2;
+    player_ship.y = app.screen.height * 2 / 3;
     player_ship.vx = 0;
     player_ship.vy = 0;
     app.stage.addChild(player_ship);
+
+    enemy_ship.x = app.screen.width / 2;
+    enemy_ship.y = app.screen.height / 3;
+    enemy_ship.anchor.set(0.5);
+    enemy_ship.rotation = Math.PI;
+    app.stage.addChild(enemy_ship);
 
     let left = keyboard('a');
     let right = keyboard('d');
@@ -94,7 +103,6 @@ function gameloop(delta){
 }
 
 function play(delta){
-    console.log(player_ship.x);
     player_ship.x += player_ship.vx;
     player_ship.y += player_ship.vy;
 }
