@@ -65,6 +65,25 @@ function keyboard(value){
             }
         }
     }
+
+    key.upHandler = event =>{
+        if(event.key === key.value){
+            if(key.isDown && key.release){
+                key.release();
+                key.isDown = false;
+                key.isUp = true;
+                event.preventDefault();
+            }
+        }
+    }
+
+    const DownListener = key.downHandler.bind(key);
+    const UpListener = key.upHandler.bind(key);
+
+    window.addEventListener("keydown", DownListener, false);
+    window.addEventListener("keyup", UpListener, false);
+
+    return key;
 }
 
 gameloop();
