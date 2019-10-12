@@ -94,6 +94,7 @@ function gameloop(delta){
 }
 
 function play(delta){
+    console.log(player_ship.x);
     player_ship.x += player_ship.vx;
     player_ship.y += player_ship.vy;
 }
