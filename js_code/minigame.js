@@ -89,8 +89,6 @@ function setup(){
 
 function gameloop(delta){
     requestAnimationFrame(gameloop);
-
-    document.onkeydown = keydown;
 }
 
 function play(delta){
