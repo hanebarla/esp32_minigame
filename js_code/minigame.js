@@ -32,8 +32,8 @@ function loadProgressHandler(){
 
 function setup(){
     //Create player and enemy ship
-    player_ship = new PIXI.Sprite(PIXI.loader.resources["images/my_ship.png"].textures);
-    enemy_ship = new PIXI.Sprite(PIXI.loader.resources["images/enemy_ship.png"].textures);
+    player_ship = new PIXI.Sprite(PIXI.loader.resources["images/my_ship.png"].texture);
+    enemy_ship = new PIXI.Sprite(PIXI.loader.resources["images/enemy_ship.png"].texture);
     player_ship.x = app.screen.width / 2;
     player_ship.y = app.screen.height * 2 / 3;
     player_ship.vx = 0;
