@@ -1,36 +1,86 @@
 const rend_width = 400;
 const rend_height = 500;
+let ship;
+let state;
+const speed = 5;
 
-var type = "WebGL";
+//WebGL support?
+let type = "WebGL";
 if(!PIXI.utils.isWebGLSupported()){
     type = "canvas";
 }
 PIXI.utils.sayHello(type);
 
-var app = new PIXI.Application({
+//make canvas
+const app = new PIXI.Application({
     width: rend_width,
     height: rend_height
 });
-
 document.getElementById("display").appendChild(app.view);
 
+//texture load
 PIXI.Loader.shared
     .add("images/ship.png")
     .on("progress", loadProgressHandler)
     .load(setup);
-
-var ship;
-var state;
 
 function loadProgressHandler(){
     console.log("loading");
 }
 
 function setup(){
-    ship = new PIXI.Sprite(PIXI.loader.resources["images/ship.png"].texture);
-    ship.x = rend_width / 2;
-    ship.y = rend_height / 2;
-    app.stage.addChild(ship);
+    //Create player and enemy ship
+    player_ship = new PIXI.Sprite(PIXI.loader.resources["images/ship.png"].texture);
+    player_ship.x = rend_width / 2;
+    player_ship.y = rend_height / 2;
+    player_ship.vx = 0;
+    player_ship.vy = 0;
+    app.stage.addChild(player_ship);
+
+    let left = keyboard('a');
+    let right = keyboard("d");
+    let up = keyboard("w");
+    let down = keyboard("s");
+
+    left.press = () => {
+        player_ship.vx = -speed;
+        player_ship.vy = 0;
+    };
+    left.release = () => {
+        if(!right.isDown && player_ship.vy === 0){
+            player_ship.vx = 0;
+        }
+    };
+
+    right.press = () => {
+        player_ship.vx = speed;
+        player_ship.vy = 0;
+    };
+    right.release = () => {
+        if(!left.isDown && player_ship.vy === 0){
+            player_ship.vx = 0;
+        }
+    };
+
+    up.press = () =>{
+        player_ship.vx = 0;
+        player_ship.vy = -speed;
+    };
+    up.release = () =>{
+        if(!down.isDown && player_ship.vx === 0){
+            player_ship.vy = 0;
+        }
+    };
+
+    down.press = () =>{
+        player_ship.vx = 0;
+        player_ship.vy = speed;
+    };
+    down.release = () =>{
+        if(!up.isDown && player_ship.vx === 0){
+            player_ship.vy = 0;
+        }
+    };
 
     state = play;
 
@@ -47,8 +97,9 @@ function play(delta){
 
 }
 
+//keyevent handler function
 function keyboard(value){
-    var key = {};
+    let key = {};
     key.value = value;
     key.isDown = false;
     key.isUp = true;
@@ -85,5 +136,3 @@ function keyboard(value){
 
     return key;
 }
-
-gameloop();
