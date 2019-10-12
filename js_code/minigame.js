@@ -101,7 +101,6 @@ function setup(){
 }
 
 function gameloop(delta){
-    requestAnimationFrame(gameloop);
 
     state(delta);
 }
