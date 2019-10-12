@@ -34,6 +34,8 @@ function setup(){
     //Create player and enemy ship
     player_ship = new PIXI.Sprite(PIXI.Loader.shared.resources["images/my_ship.png"].texture);
     enemy_ship = new PIXI.Sprite(PIXI.Loader.shared.resources["images/enemy_ship.png"].texture);
+
+    player_ship.anchor.set(0.5);
     player_ship.x = app.screen.width / 2;
     player_ship.y = app.screen.height * 2 / 3;
     player_ship.vx = 0;
@@ -105,8 +107,8 @@ function gameloop(delta){
 function play(delta){
     player_ship.x += player_ship.vx;
     player_ship.y += player_ship.vy;
-    player_ship.x = player_ship.x % rend_width;
-    player_ship.y = player_ship.y % rend_height;
+    player_ship.x = player_ship.x - Math.floor(player_ship.x / rend_width) * rend_width;
+    player_ship.y = player_ship.y - Math.floor(player_ship.y / rend_height) * rend_height;
 }
 
 //keyevent handler function
