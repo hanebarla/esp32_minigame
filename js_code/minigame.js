@@ -105,6 +105,7 @@ function keyboard(value){
     key.release = undefined;
 
     key.downHandler = event => {
+        console.log(event.key);
         if(event.key === key.value){
             if(key.isUp && key.press){
                 key.press();
