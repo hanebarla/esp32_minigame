@@ -3,7 +3,7 @@ const rend_height = 500;
 let player_ship;
 let enemy_ship;
 let state;
-const speed = 5/ 10;
+const speed = 2.5;
 
 //WebGL support?
 let type = "WebGL";
@@ -109,7 +109,6 @@ function gameloop(delta){
 function play(delta){
     player_ship.x += player_ship.vx;
     player_ship.y += player_ship.vy;
-    enemy_ship.x += speed;
     player_ship.x = display_loop(player_ship.x, rend_width);
     player_ship.y = display_loop(player_ship.y, rend_height);
     enemy_ship.x = display_loop(enemy_ship.x, rend_width);
