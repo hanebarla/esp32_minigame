@@ -40,10 +40,10 @@ function setup(){
     player_ship.vy = 0;
     app.stage.addChild(player_ship);
 
-    enemy_ship.x = app.screen.width / 2;
-    enemy_ship.y = app.screen.height / 3;
     enemy_ship.anchor.set(0.5);
     enemy_ship.rotation = Math.PI;
+    enemy_ship.x = app.screen.width / 2;
+    enemy_ship.y = app.screen.height / 3;
     app.stage.addChild(enemy_ship);
 
     let left = keyboard('a');
@@ -54,7 +54,6 @@ function setup(){
     left.press = () => {
         player_ship.vx = -speed;
         player_ship.vy = 0;
-        console.log(player_ship.vx);
     };
     left.release = () => {
         if(!right.isDown && player_ship.vy === 0){
@@ -106,6 +105,8 @@ function gameloop(delta){
 function play(delta){
     player_ship.x += player_ship.vx;
     player_ship.y += player_ship.vy;
+    player_ship.x = player_ship.x % rend_width;
+    player_ship.y = player_ship.y % rend_height;
 }
 
 //keyevent handler function
