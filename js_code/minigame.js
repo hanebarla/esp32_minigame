@@ -3,7 +3,7 @@ const rend_height = 500;
 let player_ship;
 let enemy_ship;
 let state;
-const speed = 5 / 2000;
+const speed = 5 / 100;
 
 //WebGL support?
 let type = "WebGL";
