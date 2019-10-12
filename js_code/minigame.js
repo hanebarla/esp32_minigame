@@ -46,6 +46,8 @@ function setup(){
     enemy_ship.rotation = Math.PI;
     enemy_ship.x = app.screen.width / 2;
     enemy_ship.y = app.screen.height / 3;
+    enemy_ship.vx = 0;
+    enemy_ship.vy = 0;
     app.stage.addChild(enemy_ship);
 
     let left = keyboard('a');
@@ -107,8 +109,15 @@ function gameloop(delta){
 function play(delta){
     player_ship.x += player_ship.vx;
     player_ship.y += player_ship.vy;
-    player_ship.x = player_ship.x - Math.floor(player_ship.x / rend_width) * rend_width;
-    player_ship.y = player_ship.y - Math.floor(player_ship.y / rend_height) * rend_height;
+    enemy_ship.x += speed;
+    player_ship.x = display_loop(player_ship.x, rend_width);
+    player_ship.y = display_loop(player_ship.y, rend_height);
+    enemy_ship.x = display_loop(enemy_ship.x, rend_width);
+}
+
+function display_loop(obj_pos, length){
+    obj_pos = obj_pos - Math.floor(obj_pos/length) * length;
+    return obj_pos;
 }
 
 //keyevent handler function
