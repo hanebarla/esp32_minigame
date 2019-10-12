@@ -109,7 +109,7 @@ function keyboard(value){
         console.log(event.key == key.value);
         console.log(key.press);
         if(event.key == key.value){
-            if(key.isUp && key.press){
+            if(key.isUp){
                 key.press();
                 key.isDown = true;
                 key.isUp = false;
@@ -120,7 +120,7 @@ function keyboard(value){
 
     key.upHandler = event =>{
         if(event.key === key.value){
-            if(key.isDown && key.release){
+            if(key.isDown){
                 key.release();
                 key.isDown = false;
                 key.isUp = true;
