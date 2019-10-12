@@ -54,6 +54,7 @@ function setup(){
     left.press = () => {
         player_ship.vx = -speed;
         player_ship.vy = 0;
+        console.log(player_ship.vx);
     };
     left.release = () => {
         if(!right.isDown && player_ship.vy === 0){
