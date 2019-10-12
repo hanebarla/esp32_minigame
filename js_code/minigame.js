@@ -2,7 +2,7 @@ const rend_width = 400;
 const rend_height = 500;
 let ship;
 let state;
-const speed = 5 / 1200;
+const speed = 5 / 2000;
 
 //WebGL support?
 let type = "WebGL";
