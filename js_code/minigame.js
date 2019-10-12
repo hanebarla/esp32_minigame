@@ -1,6 +1,7 @@
 const rend_width = 400;
 const rend_height = 500;
-let ship;
+let player_ship;
+let enemy_ship;
 let state;
 const speed = 5 / 2000;
 
@@ -60,7 +61,7 @@ function setup(){
         player_ship.vy = 0;
     };
     left.release = () => {
-        if(!right.isDown && player_ship.vy === 0){
+        if(!right.isDown && player_ship.vy == 0){
             player_ship.vx = 0;
         }
     };
@@ -70,7 +71,7 @@ function setup(){
         player_ship.vy = 0;
     };
     right.release = () => {
-        if(!left.isDown && player_ship.vy === 0){
+        if(!left.isDown && player_ship.vy == 0){
             player_ship.vx = 0;
         }
     };
@@ -80,7 +81,7 @@ function setup(){
         player_ship.vy = -speed;
     };
     up.release = () =>{
-        if(!down.isDown && player_ship.vx === 0){
+        if(!down.isDown && player_ship.vx == 0){
             player_ship.vy = 0;
         }
     };
@@ -90,7 +91,7 @@ function setup(){
         player_ship.vy = speed;
     };
     down.release = () =>{
-        if(!up.isDown && player_ship.vx === 0){
+        if(!up.isDown && player_ship.vx == 0){
             player_ship.vy = 0;
         }
     };
