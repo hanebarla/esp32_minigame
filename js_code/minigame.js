@@ -22,7 +22,7 @@ document.getElementById("display").appendChild(app.view);
 PIXI.Loader.shared
     .add(["images/ship.png",
           "images/my_ship.png",
-          "images/enemy_ships.png"])
+          "images/enemy_ship.png"])
     .on("progress", loadProgressHandler)
     .load(setup);
 
