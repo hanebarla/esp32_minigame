@@ -89,10 +89,13 @@ function setup(){
 
 function gameloop(delta){
     requestAnimationFrame(gameloop);
+
+    state(delta);
 }
 
 function play(delta){
-
+    player_ship.x += player_ship.vx;
+    player_ship.y += player_ship.vy;
 }
 
 //keyevent handler function
@@ -105,11 +108,8 @@ function keyboard(value){
     key.release = undefined;
 
     key.downHandler = event => {
-        console.log(event.key);
-        console.log(event.key == key.value);
-        console.log(key.press);
         if(event.key == key.value){
-            if(key.isUp){
+            if(key.isUp && key.press){
                 key.press();
                 key.isDown = true;
                 key.isUp = false;
@@ -120,7 +120,7 @@ function keyboard(value){
 
     key.upHandler = event =>{
         if(event.key === key.value){
-            if(key.isDown){
+            if(key.isDown && key.release){
                 key.release();
                 key.isDown = false;
                 key.isUp = true;
