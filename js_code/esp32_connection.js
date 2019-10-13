@@ -28,7 +28,7 @@ BLE_DEVICE.prototype.onRead = function(data){
 BLE_DEVICE.prototype.ble_notfy = function(){
     navigator.bluetooth.requestDevice({
         acceptAllDevices: true,
-        optionalServices: this.service_uuid
+        optionalServices: [this.service_uuid]
     })
     .then(device =>{
         this.device_obj = device;
