@@ -72,5 +72,5 @@ BLE_DEVICE.prototype.disconnect = function(){
 
 let Client = new BLE_DEVICE("ESP32", "3f48001d-7fbd-48dc-8b12-4556caf802b1", "868c0c4f-6087-4416-b9d7-0d5ff8aed46a");
 
-document.getElementById("connect").addEventListener('click', Client.ble_notfy(), false);
-document.getElementById("disconnect").addEventListener('click', Client.disconnect(), false);
+const connect = Client.ble_notfy();
+const disconnect = Client.disconnect();
