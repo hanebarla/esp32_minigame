@@ -33,24 +33,24 @@ BLE_DEVICE.prototype.ble_notfy = function(){
     .then(device =>{
         this.device_obj = device;
         console.log("Begin Connecting...");
-        document.getElementById("state").innerHTML = "Begin Connecting..."
+        document.getElementById("state").innerHTML = "Begin Connecting...";
         return this.device_obj.gatt.connect();
     })
     .then(server =>{
         console.log("Getting Services...");
-        document.getElementById("state").innerHTML = "Getting Services..."
+        document.getElementById("state").innerHTML = "Getting Services...";
         return server.getPrimaryService(this.service_uuid);
     })
     .then(service =>{
         console.log("Getting Characteristic...");
-        document.getElementById("state").innerHTML = "Getting Characteristic..."
+        document.getElementById("state").innerHTML = "Getting Characteristic...";
         return service.getPrimaryCharacteristic(this.charcteristic_uuid);
     })
     .then(characteristic =>{
         this.chara_obj = characteristic;
         this.chara_obj.addEventListener('characteristicvaluechanged', this.datachange())
         console.log("Connection Success!");
-        document.getElementById("state").innerHTML = "Connection Success!"
+        document.getElementById("state").innerHTML = "Connection Success!";
     })
     .then(() =>{
         this.chara_obj.startNotifications();
@@ -72,5 +72,5 @@ BLE_DEVICE.prototype.disconnect = function(){
 
 let Client = new BLE_DEVICE("ESP32", "3f48001d-7fbd-48dc-8b12-4556caf802b1", "868c0c4f-6087-4416-b9d7-0d5ff8aed46a");
 
-const connect = Client.ble_notfy();
-const disconnect = Client.disconnect();
+document.getElementById("connect") = Client.ble_notfy();
+document.getElementById("disconnect") = Client.disconnect();
