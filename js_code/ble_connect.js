@@ -1,4 +1,4 @@
-var bluetoothDevice;
+let bluetoothDevice;
 //CONNECTボタン
 console.log("page_ok");
 function connect(){
