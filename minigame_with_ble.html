@@ -7,6 +7,14 @@
     </head>
     <body>
         <div id="display"></div>
+
+        <input type="button" id="connect" value="CONNECT" onclick="Client.ble_notfy()"/>
+        <input type="button" id="disconnect" value="DISCONNECT" onclick="Client.disconnect()"/>
+
+        <div id="value"></div>
+        <div id="state"></div>
+        <div id="is_push"></div>
+
         <script src="./js_code/game_with_ble.js"></script>
 
     </body>

@@ -4,15 +4,17 @@
         <meta charset="UTF-8">
         <title>ESP32 Connection test</title>
         <script src="//cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.5/pixi.js"></script>
+        <script src="./js_code/esp32_connection.js"></script>
     </head>
     <body>
         <div id="display"></div>
-        <script src="./js_code/esp32_connection.js"></script>
+
         <input type="button" id="connect" value="CONNECT" onclick="Client.ble_notfy()"/>
         <input type="button" id="disconnect" value="DISCONNECT" onclick="Client.disconnect()"/>
 
         <div id="value"></div>
         <div id="state"></div>
+        <div id="is_push"></div>
 
     </body>
 </html>
